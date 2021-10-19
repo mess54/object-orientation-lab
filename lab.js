@@ -6,7 +6,7 @@
 
 let me = {
   name: "Jess",
-  age: 25,
+  age: 25
 };
 
 
@@ -30,14 +30,14 @@ console.log(dog);
 //////////////////////////// PROBLEM 3 ////////////////////////////
 /* Print out the name of the dog you created in problem 2 using dot-notation. */
 
-//Code here
+console.log(dog.name);
 
 
 
 //////////////////////////// PROBLEM 4 ////////////////////////////
 /* Print out the color of the dog you created in problem 2 using bracket-notation. */
 
-//Code here
+console.log(dog["color"]);
 
 
 
@@ -47,14 +47,23 @@ console.log(dog);
   Have the values to those keys be strings that are equal to your favorite thing in that category.
 */
 
-//Code here
+let favoriteThings = {
+  band: "Common Kings",
+  food: "Fettucine Alfredo",
+  person: "Mam",
+  book: "Throne of Glass",
+  movie: "Remember the Titans",
+  holiday: "Halloween",
+};
 
 
 /*
   After you've made your object, use bracket or dot notation to add another key named 'car' with the value being your favorite car and then another key named 'show' with the value being your favorite show.
 */
 
-//Code here
+favoriteThings.car = "Kia Soul";
+favoriteThings.show = "Hunter x Hunter";
+console.log(favoriteThings);
 
 
 /*
@@ -62,7 +71,9 @@ console.log(dog);
   and change the value of the book key in your favoriteThings object to be 'Harry Potter'. (If they were either of those things already, change them to something else.)
 */
 
-//Code here
+favoriteThings.food = "Chicken Nuggies"
+favoriteThings.book = "Harry Potter"
+console.log(favoriteThings);
 
 
 //////////////////////////// PROBLEM 6 ////////////////////////////
@@ -80,7 +91,8 @@ var carDetails = {
   Use object destructuring to save the property values from the object carDetails into new variables. 
 */
 
-//Code Here
+const {color, make, model, year} = carDetails;
+console.log(color)
 
 
 
@@ -93,13 +105,18 @@ var carDetails = {
 */
 
 function greeting( obj ) {
-  //Code Here
+  const {firstName, lastName, title} = obj
   
   // Do not edit the code below.
   return 'Hello, ' + title + ' ' + firstName + ' ' + lastName + '!';
   // Do not edit the code above.
 }
-
+let myObject = {
+  title: "Miss",
+  firstName: "Jess",
+  lastName: "Menna",
+};
+console.log(greeting(myObject));
 
 
 //////////////////////////// PROBLEM 8 ////////////////////////////
@@ -112,8 +129,18 @@ function greeting( obj ) {
   Sum up the values and return the total number.
 */
 
-//Code Here
-
+function totalPopulation(obj) {
+  let {utahPopulation, californiaPopulation, texasPopulation, arizonaPopulation} = obj;
+  let sum = utahPopulation + californiaPopulation + texasPopulation + arizonaPopulation;
+  return sum
+}
+let population = {
+  utahPopulation: 3206000,
+  californiaPopulation: 39510000,
+  texasPopulation: 29000000,
+  arizonaPopulation: 7279000,
+}
+console.log(totalPopulation(population))
 
 
 //////////////////////////// PROBLEM 9 ////////////////////////////
@@ -126,7 +153,18 @@ function greeting( obj ) {
   Push these new variables to an array and return the array. 
 */
 
-//Code Here
+function ingredients(object) {
+  let {carb, fat, protein} = object
+  let arr = [carb, fat, protein]
+  return arr
+}
+let macros = {
+  carb: "Carb",
+  fat: "Fat",
+  protein: "Protein"
+}
+console.log(ingredients(macros))
+
 
 
 
@@ -148,7 +186,9 @@ var user = {
   Make that change without modifying the original object code above.
 */
 
-//Code Here
+user.name = "Bryan G. Smith"
+user.email = "bryan.smith@demounta.in"
+console.log(user)
 
 
 //////////////////////////// PROBLEM 11 ////////////////////////////
@@ -156,7 +196,8 @@ var user = {
   Using the user object above, delete the users age off of the object.
 */
 
-//Code Here
+delete user.age
+console.log(user)
 
 
 //////////////////////////// PROBLEM 12 ////////////////////////////
@@ -166,8 +207,15 @@ var user = {
   Print the name of your cat instance using dot notation.
 */
 
-//Code here
-
+class Cat {
+  constructor(name, age, color) {
+    this.name = name;
+    this.age = age;
+    this.color = color;
+  };
+}
+let MrSocks = new Cat ("Mr. Socks", 5, "Black")
+console.log(MrSocks.name)
 
 
 //////////////////////////// PROBLEM 13 ////////////////////////////
@@ -178,7 +226,18 @@ var user = {
   Call the castSpell function on the instance of your wizard.
 */
 
-//Code here
+class Wizard {
+  constructor(name, age, favoriteSpell) {
+    this.name = name;
+    this.age = age;
+    this.favoriteSpell = favoriteSpell;
+  }
+  castSpell() {
+    console.log(`${this.name} has cast ${this.favoriteSpell}`);
+  }
+};
+let harry = new Wizard("Harry", 15, "Patronus")
+harry.castSpell();
 
 //////////////////////////// PROBLEM 14 ////////////////////////////
 /*
@@ -203,7 +262,26 @@ var user = {
     to be newPrice.
 */
 
-//Code Here
+class Phone {
+  constructor(brand, model, storage, color, price) {
+    this.brand = brand;
+    this.model = model;
+    this.storage = storage;
+    this.color = color;
+    this.price = price;
+    this.sold = false;
+  }
+  sell() {
+    this.sold = true
+    console.log(`${this.brand} ${this.model} has been sold.`)
+  }
+  changePrice(newPrice) {
+    this.price = newPrice;
+  }
+}
+let iphone11 = new Phone("iPhone", 11, "256gb", "Black", "$600");
+iphone11.changePrice("$500")
+console.log(iphone11.price)
 
   
 /*
@@ -216,7 +294,9 @@ var user = {
     - price: number
 */
 
-//Code Here
+let google = new Phone("Google", "Pixel 3", 128, "Black", 500)
+let samsung = new Phone("Samsung", "Galaxy Note 7", 256, "White", 800)
+let lg = new Phone("LG", "V30", 128, "Black", 650)
 
 /* 
   Call the changePrice function on one of your phones, 
@@ -225,7 +305,8 @@ var user = {
   Then console.log that object to see the price change
 */ 
 
-//Code Here 
+google.changePrice(450)
+console.log(google.price)
 
 
 /*
@@ -234,7 +315,8 @@ var user = {
   Print the value of that phone's sell property to make sure it's been changed to true
 */
 
-//Code Here 
+lg.sell()
+console.log(lg)
 
 
 //////////////////////////// PROBLEM 15 ////////////////////////////
@@ -253,8 +335,8 @@ const colors = {
 }
 //do not edit this object
 
-//Code Here 
-
+let colorsCopy = {...colors};
+console.log(colorsCopy)
 
 
 /*
